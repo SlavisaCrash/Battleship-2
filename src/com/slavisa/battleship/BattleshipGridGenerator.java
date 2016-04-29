@@ -51,36 +51,33 @@ public class BattleshipGridGenerator {
 	//Puts the appropriate ship at a random location
 	private void placeShip(int size){
 		
-		boolean status = false;
 		boolean orientation;
 		Random randomNumbers = new Random();
 		
-		while(!status){
-				orientation = randomNumbers.nextBoolean();
-				int row = randomNumbers.nextInt(9);
-				int col = randomNumbers.nextInt(9);
+		while(true){
+			orientation = randomNumbers.nextBoolean();
+			int row = randomNumbers.nextInt(9);
+			int col = randomNumbers.nextInt(9);
+			
+			if(orientation){
+				//horizontal
+				if((col + (size-1) <= 9) && (isFreeCells(row, col, size, orientation))){
 				
-				if(orientation){
-					//horizontal
-					if((col + (size-1) >= 9) ||(!isFreeCells(row, col, size, orientation))){
-						status = false;
-					}else{
-						for(int i = 0; i < size; i++){
-							board[row][col+i] = size;
-						}
-						break;
+					for(int i = 0; i < size; i++){
+						board[row][col+i] = size;
 					}
-				}else{
-					//vertical
-					if((row + (size-1) >= 9) || (!isFreeCells(row, col, size, orientation))){
-						status = false;
-					}else{
-						for(int i = 0; i < size; i++){
-							board[row+i][col] = size;
-						}
-						break;
+					break;
+				}
+			}else if(!orientation){
+				//vertical
+				if((row + (size-1) <= 9) && (isFreeCells(row, col, size, orientation))){
+					
+					for(int i = 0; i < size; i++){
+						board[row+i][col] = size;
 					}
-				}		
+					break;
+				}
+			}		
 		}
 	}
 	/*
