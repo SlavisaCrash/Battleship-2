@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#parentbox{
+	font-size: 0px;
+}
+.cell{
+	height: 35px;
+	width: 35px;
+	border: 1px solid black;
+	display: inline-block;
+	font-size: 15px;
+}
