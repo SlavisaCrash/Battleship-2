@@ -68,7 +68,7 @@ public class BattleshipGridGenerator {
 					}
 					break;
 				}
-			}else if(!orientation){
+			}else{
 				//vertical
 				if((row + (size-1) <= 9) && (isFreeCells(row, col, size, orientation))){
 					
